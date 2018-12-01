@@ -11,9 +11,13 @@ config.gypi
 CVS
 npm-debug.log
 
+# dev config
 .babelrc
 .eslintrc
 .cache
+.eslintignore
 
+# dev folders
 dev
 src
+docs
