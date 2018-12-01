@@ -2,9 +2,9 @@
 .cache
 node_modules
 yarn-error.log
+npm-debug.log
 
 # Build directory
-/dev
-/dist
-/public
 .DS_Store
+dev
+dist
