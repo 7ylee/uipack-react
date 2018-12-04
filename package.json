@@ -1,6 +1,6 @@
 {
   "name": "uipack-react",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "UI Component Library",
   "main": "./dist/index.js",
   "scripts": {
