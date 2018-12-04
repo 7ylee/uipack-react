@@ -4,7 +4,8 @@ import Input from './components/Input';
 
 const App = () => (
     <div>
-        <Button>TESTING</Button>
+        <Button type="button" text="default button" />
+        <Button type="submit" text="submit button" />
         <Input type="text" placeholder="123123" />
     </div>
 );
