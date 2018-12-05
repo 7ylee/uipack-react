@@ -5,10 +5,12 @@ import Emoji from './components/Emoji';
 
 const App = () => (
     <div>
-        <Button type="button" text="default button" />
-        <Button type="submit" text="submit button" />
+        <Button type="submit">
+            <Emoji label="alert" content="🚨" />
+            <span> SomeBtn </span>
+            <Emoji label="alert" content="🚨" />
+        </Button>
         <Input type="text" placeholder="⌨" />
-
         <Emoji label="smileface" content="😃" />
     </div>
 );

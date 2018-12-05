@@ -8,3 +8,4 @@ npm-debug.log
 .DS_Store
 dev
 dist
+__tests__/Components/__snapshots__

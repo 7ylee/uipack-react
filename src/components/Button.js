@@ -19,8 +19,8 @@ export const style = {
 };
 
 /* eslint-disable react/button-has-type */
-const Button = ({ type, text }) => (
-    <button type={type} style={type === 'button' ? style.default : style.submit}>{text}</button>
+const Button = ({ type, children }) => (
+    <button type={type} style={type === 'button' ? style.default : style.submit}>{children}</button>
 );
 
 // has default type
@@ -30,6 +30,9 @@ Button.defaultProps = {
 
 Button.propTypes = {
     type: PropTypes.string,
-    text: PropTypes.string.isRequired,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired
 };
 export default Button;
