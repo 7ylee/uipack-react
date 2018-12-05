@@ -7,14 +7,14 @@ export const style = {
         'color': '#fff',
         'border': '1px solid #999',
         'padding': '0.25em 1em',
-        'line-height': '1.5',
+        'lineHeight': '1.5',
     },
     submit: {
         'background': '#fff',
         'color': '#666',
         'border': '1px solid #666',
         'padding': '0.25em 1em',
-        'line-height': '1.5',
+        'lineHeight': '1.5',
     }
 };
 
