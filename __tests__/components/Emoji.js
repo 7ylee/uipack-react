@@ -5,7 +5,7 @@ import Emoji from '../../src/components/Emoji';
 describe('Emoji', () => {
     let wrapper;
     beforeEach(() => {
-        wrapper = shallow(<Emoji label="smilie" content="😃" />);
+        wrapper = shallow(<Emoji label="smilie" symbol="😃" />);
     });
     it('should render <span></span>', () => {
         expect(wrapper.find('span').length).toEqual(1);
@@ -16,7 +16,7 @@ describe('Emoji', () => {
     it('should have [aria-label] attribute', () => {
         expect(wrapper.prop('aria-label')).toEqual('smilie');
     })
-    it('should have text as children === `content` prop', () => {
+    it('should have text as children === `symbol` prop', () => {
         expect(wrapper.children().text()).toEqual('😃')
     })
 });

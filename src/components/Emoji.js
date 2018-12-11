@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Emoji = ({ label, content }) => (
-    <span role="img" aria-label={label}>{content}</span>
+const Emoji = ({ label, symbol }) => (
+    <span role="img" aria-label={label || ''}>{symbol}</span>
 );
 
+Emoji.defaultProps = {
+    label: ''
+};
+
 Emoji.propTypes = {
-    content: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
+    symbol: PropTypes.string.isRequired,
+    label: PropTypes.string
 };
 
 export default Emoji;
