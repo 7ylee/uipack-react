@@ -19,20 +19,20 @@ export const style = {
 };
 
 /* eslint-disable react/button-has-type */
-const Button = ({ type, children }) => (
+const ButtonOld = ({ type, children }) => (
     <button type={type} style={type === 'button' ? style.default : style.submit}>{children}</button>
 );
 
 // has default type
-Button.defaultProps = {
+ButtonOld.defaultProps = {
     type: 'button'
 };
 
-Button.propTypes = {
+ButtonOld.propTypes = {
     type: PropTypes.string,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
     ]).isRequired
 };
-export default Button;
+export default ButtonOld;
