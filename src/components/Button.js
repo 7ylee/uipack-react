@@ -3,22 +3,8 @@ import Color from 'color';
 import { resetCSS, boxShadow } from '../utility';
 import { normal } from '../theme';
 
-const darkenColorHex = (color, percent) => Color(color).darken(percent).hex();
-
-const mapColorByProps = (props) => {
-    const { primary, secondary, positive, negative, theme } = props;
-    let colorState = theme.WHITE;
-
-    if (primary) colorState = theme.PRIMARY;
-    if (secondary) colorState = theme.SECONDARY;
-    if (positive) colorState = theme.POSITIVE
-    if (negative) colorState = theme.NEGATIVE;
-
-    return colorState;
-};
-
 const Button = styled.button`
-    ${resetCSS + boxShadow}
+    ${resetCSS + boxShadow};
 
     position: relative;
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -37,36 +23,53 @@ const Button = styled.button`
                 font-size: 1em;
                 line-height: 46px;
             `;
-        }
+        };
         if (props.small) {
             return css`
                 padding: 0 12px;
                 font-size: 0.6em;
                 line-height: 22px;
-            `
+            `;
         };
         return css`
             padding: 0 16px;
             font-size: 0.8em;
             line-height: 30px;
         `;
-    }}
+    }};
 
     /* style properties */
-    border-radius: 2px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: ${props => darkenColorHex(mapColorByProps(props), 0.3)};
-    background-color: ${props => mapColorByProps(props)};
-    color: ${props => Color(mapColorByProps(props)).isDark() ? props.theme.WHITE : props.theme.GRAY_3};
-    &:hover,
-    &:focus {
-        outline: none;
-        background-color: ${props => {
-        const color = Color(mapColorByProps(props))
-        return color.isDark() ? color.darken(0.15).hex() : color.darken(0.08).hex();
+    /* style properties */
+    ${props => {
+        let propColor = props.theme.WHITE;
+        if (props.primary) {
+            propColor = props.theme.PRIMARY;
+        };
+        if (props.secondary) {
+            propColor = props.theme.SECONDARY;
+        };
+        if (props.positive) {
+            propColor = props.theme.POSITIVE;
+        };
+        if (props.negative) {
+            propColor = props.theme.NEGATIVE;
+        };
+
+        return css`
+            border-radius: 2px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: ${Color(propColor).darken(0.3).hex()};
+            background-color: ${propColor};
+            color: ${Color(propColor).isDark() ? props.theme.WHITE : props.theme.GRAY_3};
+
+            &:focus,
+            &:hover {
+                outline: none;
+                background-color: ${Color(propColor).isDark() ? Color(propColor).darken(0.15).hex() : Color(propColor).darken(0.08).hex()};
+            };
+        `;
     }};
-    }
 `;
 
 Button.defaultProps = { theme: {} };
