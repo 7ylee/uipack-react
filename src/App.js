@@ -1,13 +1,28 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { idus, normal } from './theme';
+
 import Emoji from './components/Emoji';
 import Button from './components/Button';
-import { idus } from './theme';
+import Title from './components/Title';
+
+const GlobalStyle = createGlobalStyle`
+    * {
+        line-height: 1.5;
+    };
+`;
 
 const App = () => (
     <ThemeProvider theme={idus}>
         <div>
-            <Button>THEMED BUTTON <Emoji symbol="😃" /></Button>
+            <GlobalStyle />
+            <Title as="h1">UIPACK-IDUS</Title>
+            <Button primary>THEMED BUTTON <Emoji symbol="😃" /></Button>
+            <Button secondary>THEMED BUTTON <Emoji symbol="😃" /></Button>
+            <br />
+            <Button theme={normal} primary large>THEMED BUTTON <Emoji symbol="😃" /></Button>
+            <Button theme={normal}>THEMED BUTTON <Emoji symbol="😃" /></Button>
+            <Button theme={normal} secondary small>THEMED BUTTON <Emoji symbol="😃" /></Button>
         </div>
     </ThemeProvider>
 );
