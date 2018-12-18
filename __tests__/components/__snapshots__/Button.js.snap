@@ -1,8 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Btn renders correctly 1`] = `
+exports[`Button has disabled attribute 1`] = `
 <button
-  className="sc-bdVaJa iJfITI"
+  className="sc-bdVaJa cjRWsL"
+  disabled={true}
+  type="button"
+>
+  Button
+</button>
+`;
+
+exports[`Button has display modifier - block 1`] = `
+<button
+  className="sc-bdVaJa fIZFGC"
+  type="button"
+>
+  Button
+</button>
+`;
+
+exports[`Button has size & style & display modifier 1`] = `
+<button
+  className="sc-bdVaJa cjRWsL"
+  type="button"
+>
+  Button
+</button>
+`;
+
+exports[`Button has size modifier - small 1`] = `
+<button
+  className="sc-bdVaJa bJXexq"
+  type="button"
+>
+  Button
+</button>
+`;
+
+exports[`Button has style modifier - primary 1`] = `
+<button
+  className="sc-bdVaJa gGebTM"
+  type="button"
+>
+  Button
+</button>
+`;
+
+exports[`Button renders correctly with theme 1`] = `
+<button
+  className="sc-bdVaJa hPVGnU"
+  type="button"
 >
   Button
 </button>

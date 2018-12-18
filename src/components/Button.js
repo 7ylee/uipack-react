@@ -11,6 +11,15 @@ const Button = styled.button`
     text-decoration: none;
     cursor: pointer;
 
+    /* default element attributes */
+    &[disabled] {
+        color: ${props => props.theme.GRAY_LIGHT_3000};
+        border-color: ${props => props.theme.GRAY_LIGHT_2000};
+        background: ${props => props.theme.GRAY_LIGHT_1000};
+        cursor: default;
+        box-shadow:none;
+    };
+
     /* display props */
     vertical-align: middle;
     display: ${props => props.block ? 'block' : 'inline-block'};
@@ -39,7 +48,6 @@ const Button = styled.button`
     }};
 
     /* style properties */
-    /* style properties */
     ${props => {
         let propColor = props.theme.WHITE;
         if (props.primary) {
@@ -63,8 +71,8 @@ const Button = styled.button`
             background-color: ${propColor};
             color: ${Color(propColor).isDark() ? props.theme.WHITE : props.theme.GRAY_3};
 
-            &:focus,
-            &:hover {
+            &:focus:not(:disabled),
+            &:hover:not(:disabled) {
                 outline: none;
                 background-color: ${Color(propColor).isDark() ? Color(propColor).darken(0.15).hex() : Color(propColor).darken(0.08).hex()};
             };

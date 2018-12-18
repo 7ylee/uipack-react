@@ -1,17 +1,53 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import Button from '../../src/components/Button';
+import { renderWithTheme } from '../../__test_helper__';
 
 describe('Button', () => {
-    let tree;
-    beforeEach(() => {
-        tree = renderer
-            .create(<Button>Button</Button>)
-            .toJSON();
-    })
-    it('renders correctly', () => expect(tree).toMatchSnapshot());
-    // can have theme
+    // render with theme
+    it('renders correctly with theme', () => {
+        const tree = renderWithTheme(
+            <Button type="button">Button</Button>
+        ).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
     // style modifiers - has primary, secondary, positive, negative variations
-    // size modifiers - has large, small, medium by default
+    it('has style modifier - primary', () => {
+        const tree = renderWithTheme(
+            <Button type="button" primary>Button</Button>
+        ).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    // style modifiers - has small, large
+    it('has size modifier - small', () => {
+        const tree = renderWithTheme(
+            <Button type="button" small>Button</Button>
+        ).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
     // display modifiers - inline by default
+    it('has display modifier - block', () => {
+        const tree = renderWithTheme(
+            <Button type="button" block>Button</Button>
+        ).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    // size modifiers - has large, small, medium by default
+    it('has size & style & display modifier', () => {
+        const tree = renderWithTheme(
+            <Button type="button" primary large block>Button</Button>
+        ).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    // disabled attribute
+    it('has disabled attribute', () => {
+        const tree = renderWithTheme(
+            <Button type="button" primary large block disabled>Button</Button>
+        ).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
 });
