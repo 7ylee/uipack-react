@@ -8,7 +8,7 @@ module.exports = {
         path: path.resolve(__dirname, 'docs'),
         filename: '[name].[hash].bundle.js',
         chunkFilename: '[name].[hash].bundle.js',
-        publicPath: '/'
+        publicPath: '/uipack-react/'
     },
     optimization: {
         splitChunks: {
