@@ -61,7 +61,8 @@ const config = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'demo/index.html',
-            filename: 'index.html'
+            filename: 'index.html',
+            favicon: 'demo/favicon.ico'
         })
     ]
 };

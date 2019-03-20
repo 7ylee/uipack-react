@@ -1,7 +1,19 @@
 {
   "name": "uipack-react",
   "version": "1.1.1",
-  "description": "UI Component Library",
+  "description": "styled-component UI library",
+  "author": "tylee",
+  "license": "MIT",
+  "keywords": [
+    "React",
+    "styled-components",
+    "UI",
+    "library"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/7ylee/uipack-react.git"
+  },
   "main": "lib/uipack-react.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run build:demo",
@@ -10,18 +22,8 @@
     "deploy": "npm run build && npm publish",
     "test": "jest --updateSnapshot",
     "dev:demo": "webpack-dev-server --config webpack.dev.js",
-    "build:demo": "webpack --env build --config webpack.dev.js"
+    "build:demo": "rm -rf docs && webpack --env build --config webpack.dev.js"
   },
-  "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/test-setup.js"
-  },
-  "keywords": [
-    "React",
-    "styled-components",
-    "UI Framework"
-  ],
-  "author": "taeyouklee@gmail.com",
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
@@ -67,6 +69,9 @@
     "react-dom": "^16.8.4",
     "styled-components": "^4.1.3"
   },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/test-setup.js"
+  },
   "babel": {
     "presets": [
       "@babel/preset-env",
@@ -79,6 +84,7 @@
       [
         "styled-components",
         {
+          "displayName": false,
           "ssr": true,
           "minify": true,
           "pure": true

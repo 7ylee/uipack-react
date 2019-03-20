@@ -10,4 +10,8 @@
 npm i -S react styled-components uipack-react
 ```
 
-working...
+## working... ToDos
+
+- [ ] remove `"color": "^3.1.0"` package
+- [ ] unit tests
+- [ ] clean npm scripts
