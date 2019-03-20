@@ -1,39 +1,57 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+/* global __dirname, require, module */
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const path = require('path');
+const { env } = require('yargs').argv; // use --env with webpack 2
+const pkg = require('./package.json');
 
-module.exports = {
-    mode: 'development',
-    entry: './src/index.js',
-    devtool: 'eval',
-    devServer: {
-        contentBase: path.join(__dirname, 'dev'),
-        compress: true,
-        port: 9000
-    },
+const libraryName = pkg.name;
+
+let outputFile; let mode; let plugins;
+
+if (env === 'build') {
+    mode = 'production';
+    outputFile = `${libraryName}.min.js`;
+    plugins = [
+        new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
+    ];
+} else {
+    mode = 'development';
+    outputFile = `${libraryName}.js`;
+    plugins = [];
+}
+
+const config = {
+    mode,
+    entry: `${__dirname}/src/index.js`,
+    devtool: 'inline-source-map',
     output: {
-        path: path.resolve(__dirname, 'dev'),
-        filename: 'demo.js',
-        publicPath: '/'
+        path: `${__dirname}/lib`,
+        filename: outputFile,
+        library: libraryName,
+        libraryTarget: 'umd',
+        umdNamedDefine: true,
+        globalObject: 'typeof self !== \'undefined\' ? self : this'
     },
     module: {
         rules: [
             {
-                test: /\.m?js$/,
-                exclude: /(node_modules)/,
-                use: {
-                    loader: 'babel-loader'
-                }
+                test: /(\.jsx|\.js)$/,
+                loader: 'babel-loader',
+                exclude: /(node_modules|bower_components)/
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: 'file-loader?name=assets/images/[name].[ext]'
+                test: /(\.jsx|\.js)$/,
+                loader: 'eslint-loader',
+                exclude: /node_modules/
             }
         ]
     },
-    externals: [],
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: 'src/index.html'
-        })
-    ]
+    externals: ['react', 'react-dom', 'prop-types', 'styled-components'],
+    resolve: {
+        modules: [path.resolve('./node_modules'), path.resolve('./src')],
+        extensions: ['.json', '.js']
+    },
+    plugins
 };
+
+module.exports = config;

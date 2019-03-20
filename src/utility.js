@@ -25,6 +25,6 @@ export const media = Object.keys(breakpoint).reduce((acc, label) => {
         @media (max-width: ${breakpoint[label] / 16}em) {
             ${css(...args)}
         }
-    `
-    return acc
+    `;
+    return acc;
 }, {});

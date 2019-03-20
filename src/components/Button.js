@@ -84,7 +84,7 @@ Button.defaultProps = { theme: {} };
 // map normal theme as default;
 Object.keys(normal).map(key => {
     Button.defaultProps.theme[key] = normal[key];
-    return false
+    return false;
 });
 
 export default Button;
