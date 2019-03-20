@@ -1,7 +1,7 @@
 /* global __dirname, require, module */
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const path = require('path');
-const { env } = require('yargs').argv; // use --env with webpack 2
+const { env } = require('yargs').argv;
 const pkg = require('./package.json');
 
 const libraryName = pkg.name;

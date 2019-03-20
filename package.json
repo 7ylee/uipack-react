@@ -4,17 +4,20 @@
   "description": "UI Component Library",
   "main": "lib/uipack-react.js",
   "scripts": {
-    "build": "webpack --env dev && webpack --env build",
+    "build": "webpack --env dev && webpack --env build && npm run build:demo",
     "dev": "webpack --progress --colors --watch --env dev",
     "lint": "eslint src",
     "deploy": "npm run build && npm publish",
-    "test": "jest --updateSnapshot"
+    "test": "jest --updateSnapshot",
+    "dev:demo": "webpack-dev-server --config webpack.dev.js",
+    "build:demo": "webpack --env build --config webpack.dev.js"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/test-setup.js"
   },
   "keywords": [
     "React",
+    "styled-components",
     "UI Framework"
   ],
   "author": "taeyouklee@gmail.com",
